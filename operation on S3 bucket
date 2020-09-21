@@ -1,0 +1,45 @@
+import java.io.File;
+
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3Client;
+
+public class s3copyfiles {
+	
+	
+
+	final static String accesskey = "AKIA323TEJZHEYE6EU6I";
+	final static String secretkey = "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";
+	final static String bucketname = "pratik1bucket";
+
+	
+	private static AmazonS3Client s3 = new AmazonS3Client(new BasicAWSCredentials(accesskey, secretkey));
+	
+	public static void main(String[] args) {
+	
+	
+    System.out.println("\n\n1) ----Copy Object---\n");
+
+	 
+
+    String sourceKey = "037.jpg";
+    String to_bucket = "pratik2001bucket";
+
+
+
+    s3.copyObject(bucketname, sourceKey, to_bucket, sourceKey);
+    System.out.println("----Object Copy successfully---");
+
+
+
+   System.out.println("\n\n2) ----delete Object---\n");
+
+
+
+    s3.deleteObject(to_bucket, "037.jpg");
+
+
+
+    System.out.println("\n----Object deleted successfully---\n");
+
+}
+}
